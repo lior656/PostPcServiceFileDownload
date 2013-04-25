@@ -8,19 +8,35 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import android.app.IntentService;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
+import android.os.Handler;
 import android.widget.Toast;
 
 public class FileDownload extends IntentService {
+
+	private Handler mHandler;
 
 	public FileDownload() {
 		super("FileDownload");
 	}
 
 	@Override
+	public void onCreate() {
+	    super.onCreate();
+	    mHandler = new Handler();
+	}; 
+	
+	@Override
 	protected void onHandleIntent(Intent intent) {
+		
+		//show start msg, in a new thread that will handle it
+	    mHandler.post(new Runnable() {            
+	        @Override
+	        public void run() {
+	            Toast.makeText(FileDownload.this, "text file download started!", Toast.LENGTH_LONG).show();                
+	        }
+	    });
 		
 		String urlPath = intent.getStringExtra("urlpath");
 		Toast.makeText(this,"asdf",Toast.LENGTH_LONG).show();
@@ -58,5 +74,13 @@ public class FileDownload extends IntentService {
 				}
 			}
 		}
+		
+		//show end msg, in a new thread that will handle it
+	    mHandler.post(new Runnable() {            
+	        @Override
+	        public void run() {
+	            Toast.makeText(FileDownload.this, "text file download ended!", Toast.LENGTH_LONG).show();                
+	        }
+	    });
 	}
 }
