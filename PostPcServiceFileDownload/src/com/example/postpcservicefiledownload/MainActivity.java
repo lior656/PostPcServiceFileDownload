@@ -53,16 +53,10 @@ public class MainActivity extends Activity {
         dButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-
-				
-				
 			    Intent intent = new Intent(thisA, FileDownload.class);
-			    intent.putExtra("urlpath", "http://www.tinylever.com/wp-content/uploads/2013/02/One-Enough-Social-Media-Tiny-Lever.png");
-			    intent.putExtra("fileName", "1");
+			    intent.putExtra("urlpath", "http://www.angelfire.com/tx5/worldofmagic/attractions.htm#rides");
+			    intent.putExtra("fileName", "harryPotter.html");
 			    startService(intent);
-			    
-				
-				
 			}
 		});
     }

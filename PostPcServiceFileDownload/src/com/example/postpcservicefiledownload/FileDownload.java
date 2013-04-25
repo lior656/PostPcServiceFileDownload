@@ -22,15 +22,11 @@ public class FileDownload extends IntentService {
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		
-		Context context = getApplicationContext();
-		CharSequence text = "Download intent sstarted!";
-		int duration = Toast.LENGTH_SHORT;
-		Toast.makeText(context, text, duration).show();
 		String urlPath = intent.getStringExtra("urlpath");
-		
+		Toast.makeText(this,"asdf",Toast.LENGTH_LONG).show();
 		File output = new File(Environment.getExternalStorageDirectory(),intent.getStringExtra("fileName"));
 		if (output.exists()) output.delete();
-		System.out.println("fff" + urlPath); //TODO
+		System.out.println("fff" + Environment.getExternalStorageDirectory()+ "!" + intent.getStringExtra("fileName")); //TODO
 		InputStream stream = null;
 		FileOutputStream fos = null;
 		try {
@@ -61,10 +57,6 @@ public class FileDownload extends IntentService {
 					e.printStackTrace();
 				}
 			}
-			text = "Download intent ended!";
-			duration = Toast.LENGTH_SHORT;
-			Toast.makeText(context, text, duration).show();
-
 		}
 	}
 }
