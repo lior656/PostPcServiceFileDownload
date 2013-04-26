@@ -42,7 +42,6 @@ public class FileDownload extends IntentService {
 		Toast.makeText(this,"asdf",Toast.LENGTH_LONG).show();
 		File output = new File(Environment.getExternalStorageDirectory(),intent.getStringExtra("fileName"));
 		if (output.exists()) output.delete();
-		System.out.println("fff" + Environment.getExternalStorageDirectory()+ "!" + intent.getStringExtra("fileName")); //TODO
 		InputStream stream = null;
 		FileOutputStream fos = null;
 		try {
@@ -51,11 +50,9 @@ public class FileDownload extends IntentService {
 			InputStreamReader reader = new InputStreamReader(stream);
 			fos = new FileOutputStream(output.getPath());
 			int next = -1;
-			System.out.println("ssss"); //TODO
 			//write to file
 			while ((next = reader.read()) != -1) fos.write(next);
 			// Sucessful finished, close streams
-			System.out.println("sss"); //TODO
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
