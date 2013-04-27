@@ -1,7 +1,7 @@
 package com.example.postpcservicefiledownload;
 
 
-import java.text.DecimalFormat;
+
 
 
 import android.os.Bundle;
@@ -11,38 +11,22 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-	private static final double TIP_PRECENT = 0.12;
+	private static int count = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tip_calculator);
+        setContentView(R.layout.activity_counter);
         
-        Button culcButton = (Button) findViewById(R.id.btnCalculate);
-        final TextView tipRes = (TextView) findViewById(R.id.txtTipResult);
-        final CheckBox shouldRound = (CheckBox) findViewById(R.id.chkRound);
-        final EditText ammountText = (EditText) findViewById(R.id.edtBillAmount);
+        Button culcButton = (Button) findViewById(R.id.btnAdd);
+        final TextView tipRes = (TextView) findViewById(R.id.result);
         culcButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				String ammountStr = ammountText.getText().toString();
-				double ammount = 0.0;
-				if(!(ammountStr == null || ammountStr.equals(""))) {
-					ammount = TIP_PRECENT * Double.parseDouble(ammountStr);
-				}
-				if(shouldRound.isChecked()){
-					int tip = (int) Math.round(ammount);
-					tipRes.setText("Tip: $" + Integer.toString(tip));	
-				}else{
-					DecimalFormat noRoundFormat = new DecimalFormat("0.00");
-					tipRes.setText("Tip: $" + noRoundFormat.format(ammount));
-				}
-				
-				
+				count++;
+				tipRes.setText(Integer.toString(count));		
 			}
 		});
         
@@ -63,7 +47,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.tip_calculator, menu);
+        getMenuInflater().inflate(R.menu.counter, menu);
         return true;
     }
     

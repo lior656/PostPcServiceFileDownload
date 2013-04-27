@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">tipcalculator</string>
+    <string name="app_name">counter</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="Bill_Amount">Bill Amount</string>
-    <string name="cheakRound">Round to nearest dollar</string>
-    <string name="calc">Calculate</string>
-    <string name="tip"> </string>
+    <string name="downloadFile">download file from the internet</string>
+    <string name="calc">Add</string>
+    <string name="value">0</string>
 
 </resources>
